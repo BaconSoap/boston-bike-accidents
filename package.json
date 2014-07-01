@@ -1,0 +1,23 @@
+{
+  "name": "boston-bike-accidents",
+  "version": "0.0.1",
+  "description": "mapping boston bike accidents",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BaconSoap/boston-bike-accidents.git"
+  },
+  "author": "Andrew Varnerin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BaconSoap/boston-bike-accidents/issues"
+  },
+  "devDependencies": {
+    "gulp-tsc": "~0.9.1",
+    "gulp": "~3.8.5",
+    "gulp-tslint": "~1.2.0"
+  }
+}

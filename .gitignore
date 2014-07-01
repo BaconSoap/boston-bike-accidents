@@ -1,3 +1,5 @@
 node_modules
 .idea
-
+bower_components
+typings
+data/bikes_raw.json
