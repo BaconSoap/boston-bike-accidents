@@ -26,5 +26,19 @@ module bostonBiking {
 
 	export class Map {
 		public constructor(private map: L.mapbox.Map) {}
+
+		public addFeatures(geoJson: any) {
+			L.geoJson(geoJson, {
+				pointToLayer: (feature, latLng) => {
+					return L.circleMarker(latLng, {
+						radius: 4,
+						fillOpacity: 0.7,
+						color: '#990909',
+						opacity: 1,
+						weight: 0.5
+					});
+				}
+			}).addTo(this.map);
+		}
 	}
 }

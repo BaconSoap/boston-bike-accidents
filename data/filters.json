@@ -1,0 +1,9 @@
+{
+	"filters": [
+		{
+			"prettyName": "Date",
+			"type": "date",
+			"column": "DATE"
+		}
+	]
+}
