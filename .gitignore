@@ -4,3 +4,4 @@ bower_components
 typings
 data/bikes_raw.json
 data/bikes_filtered.json
+secrets.js

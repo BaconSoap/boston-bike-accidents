@@ -11,13 +11,13 @@ var config = {
 gulp.task('default', ['build']);
 
 gulp.task('build', ['lint'], function() {
-	gulp.src(config.path.srcFiles)
+	return gulp.src(config.path.srcFiles)
 		.pipe(typescript({out: 'app.js'}))
 		.pipe(gulp.dest('build/'));
 });
 
 gulp.task('lint', function() {
-	gulp.src(config.path.srcFiles)
+	return gulp.src(config.path.srcFiles)
 		.pipe(tslint())
 		.pipe(tslint.report('verbose', {emitError: false}));
 });

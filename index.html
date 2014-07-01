@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/index.css"/>
+    <script src="secrets.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
+    <script src="build/app.js"></script>
 </head>
-<body>
+<body ng-app="bostonBiking">
     <div class="wrapper">
         <!--<div class="header">
             header
         </div>-->
         <div class="wrapright">
-            <div class="right">
-                map
+            <div class="right" ng-controller="mapCtrl">
+                <div id="map-canvas"></div>
             </div>
         </div>
         <div class="left">

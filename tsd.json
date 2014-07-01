@@ -10,6 +10,12 @@
     },
     "jquery/jquery.d.ts": {
       "commit": "3c26df13c42c5a7c585237f390d787ffc7d61bfc"
+    },
+    "mapbox/mapbox.d.ts": {
+      "commit": "b40258ccaa0ba9fac889f668f5346f59880d6d66"
+    },
+    "leaflet/leaflet.d.ts": {
+      "commit": "b40258ccaa0ba9fac889f668f5346f59880d6d66"
     }
   }
 }
