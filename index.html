@@ -20,8 +20,12 @@
                 <div id="map-canvas"></div>
             </div>
         </div>
-        <div class="left">
-            Controls
+        <div class="left" ng-controller="filterCtrl">
+            <ul>
+                <li ng-repeat="dataFilter in dataFilters">
+                    <label><input type="text" ng-model="dataFilter.value" ng-change="updateFilters()"> {{dataFilter.prettyName}}</label>
+                </li>
+            </ul>
         </div>
         <!--<div class="footer">
             footer

@@ -3,7 +3,18 @@
 		{
 			"prettyName": "Date",
 			"type": "date",
-			"column": "DATE"
+			"column": "DATE",
+			"options": {
+				"range": "..."
+			}
+		},
+		{
+			"prettyName": "Gender",
+			"type": "text",
+			"column": "GENDER",
+			"options": {
+
+			}
 		}
 	]
 }
