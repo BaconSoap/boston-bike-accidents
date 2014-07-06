@@ -1,0 +1,841 @@
+{
+	"filters": [
+		{
+			"type": "text",
+			"column": "ID",
+			"prettyName": "ID"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 2009,
+					"text": 2009
+				},
+				{
+					"id": 2010,
+					"text": 2010
+				},
+				{
+					"id": 2011,
+					"text": 2011
+				},
+				{
+					"id": 2012,
+					"text": 2012
+				}
+			],
+			"column": "YEAR",
+			"prettyName": "YEAR"
+		},
+		{
+			"type": "date",
+			"column": "DATE",
+			"prettyName": "DATE"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "Friday",
+					"text": "Friday"
+				},
+				{
+					"id": "Monday",
+					"text": "Monday"
+				},
+				{
+					"id": "Saturday",
+					"text": "Saturday"
+				},
+				{
+					"id": "Sunday",
+					"text": "Sunday"
+				},
+				{
+					"id": "Thursday",
+					"text": "Thursday"
+				},
+				{
+					"id": "Tuesday",
+					"text": "Tuesday"
+				},
+				{
+					"id": "Wednesday",
+					"text": "Wednesday"
+				}
+			],
+			"column": "DAY_WEEK",
+			"prettyName": "DAY_WEEK"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "1899/12/30",
+					"text": "1899/12/30"
+				}
+			],
+			"column": "TIME",
+			"prettyName": "TIME"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "BR",
+					"text": "BR"
+				},
+				{
+					"id": "BVA",
+					"text": "BVA"
+				},
+				{
+					"id": "BVB",
+					"text": "BVB"
+				},
+				{
+					"id": "BVP",
+					"text": "BVP"
+				},
+				{
+					"id": "CO",
+					"text": "CO"
+				}
+			],
+			"column": "TYPE",
+			"prettyName": "TYPE"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "CALL SCREENING",
+					"text": "CALL SCREENING"
+				},
+				{
+					"id": "E911",
+					"text": "E911"
+				},
+				{
+					"id": "N/A",
+					"text": "N/A"
+				},
+				{
+					"id": "ON-SITE",
+					"text": "ON-SITE"
+				},
+				{
+					"id": "PHONE-IN",
+					"text": "PHONE-IN"
+				},
+				{
+					"id": "WALK-IN",
+					"text": "WALK-IN"
+				}
+			],
+			"column": "SOURCE",
+			"prettyName": "SOURCE"
+		},
+		{
+			"type": "text",
+			"column": "XFINAL",
+			"prettyName": "XFINAL"
+		},
+		{
+			"type": "text",
+			"column": "Xkm",
+			"prettyName": "Xkm"
+		},
+		{
+			"type": "text",
+			"column": "YFINAL",
+			"prettyName": "YFINAL"
+		},
+		{
+			"type": "text",
+			"column": "Ykm",
+			"prettyName": "Ykm"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				}
+			],
+			"column": "Address",
+			"prettyName": "Address"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "Main",
+			"prettyName": "Main"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "Com",
+					"text": "Com"
+				},
+				{
+					"id": "Emp",
+					"text": "Emp"
+				},
+				{
+					"id": "Exe",
+					"text": "Exe"
+				},
+				{
+					"id": "Ind",
+					"text": "Ind"
+				},
+				{
+					"id": "Res",
+					"text": "Res"
+				}
+			],
+			"column": "RoadType",
+			"prettyName": "RoadType"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "ISINTERSEC",
+			"prettyName": "ISINTERSEC"
+		},
+		{
+			"type": "text",
+			"column": "TRACT",
+			"prettyName": "TRACT"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 3,
+					"text": 3
+				},
+				{
+					"id": 4,
+					"text": 4
+				},
+				{
+					"id": 5,
+					"text": 5
+				},
+				{
+					"id": 6,
+					"text": 6
+				},
+				{
+					"id": 7,
+					"text": 7
+				},
+				{
+					"id": 8,
+					"text": 8
+				},
+				{
+					"id": 9,
+					"text": 9
+				}
+			],
+			"column": "CouncilDIS",
+			"prettyName": "CouncilDIS"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "Councillor Baker",
+					"text": "Councillor Baker"
+				},
+				{
+					"id": "Councillor Ciommo",
+					"text": "Councillor Ciommo"
+				},
+				{
+					"id": "Councillor Consalvo",
+					"text": "Councillor Consalvo"
+				},
+				{
+					"id": "Councillor Jackson",
+					"text": "Councillor Jackson"
+				},
+				{
+					"id": "Councillor LaMattina",
+					"text": "Councillor LaMattina"
+				},
+				{
+					"id": "Councillor Linehan",
+					"text": "Councillor Linehan"
+				},
+				{
+					"id": "Councillor O'Malley",
+					"text": "Councillor O'Malley"
+				},
+				{
+					"id": "Councillor Ross",
+					"text": "Councillor Ross"
+				},
+				{
+					"id": "Councillor Yancey",
+					"text": "Councillor Yancey"
+				}
+			],
+			"column": "Councillor",
+			"prettyName": "Councillor"
+		},
+		{
+			"type": "text",
+			"column": "PlanningDi",
+			"prettyName": "PlanningDi"
+		},
+		{
+			"type": "text",
+			"column": "OIF1",
+			"prettyName": "OIF1"
+		},
+		{
+			"type": "text",
+			"column": "OIF2",
+			"prettyName": "OIF2"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 3,
+					"text": 3
+				},
+				{
+					"id": 10,
+					"text": 10
+				},
+				{
+					"id": 16,
+					"text": 16
+				},
+				{
+					"id": 98,
+					"text": 98
+				}
+			],
+			"column": "OIF3",
+			"prettyName": "OIF3"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 11,
+					"text": 11
+				},
+				{
+					"id": 98,
+					"text": 98
+				}
+			],
+			"column": "OIF4",
+			"prettyName": "OIF4"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "BLFinal",
+			"prettyName": "BLFinal"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 99,
+					"text": 99
+				}
+			],
+			"column": "CS",
+			"prettyName": "CS"
+		},
+		{
+			"type": "text",
+			"column": "LIGHTING",
+			"prettyName": "LIGHTING"
+		},
+		{
+			"type": "multi",
+			"values": [],
+			"column": "Indoor",
+			"prettyName": "Indoor"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 99,
+					"text": 99
+				}
+			],
+			"column": "Light",
+			"prettyName": "Light"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "LightEng",
+			"prettyName": "LightEng"
+		},
+		{
+			"type": "text",
+			"column": "WEATHER",
+			"prettyName": "WEATHER"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 3,
+					"text": 3
+				}
+			],
+			"column": "PrecipCond",
+			"prettyName": "PrecipCond"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 3,
+					"text": 3
+				}
+			],
+			"column": "AtmosCondi",
+			"prettyName": "AtmosCondi"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 3,
+					"text": 3
+				},
+				{
+					"id": 4,
+					"text": 4
+				}
+			],
+			"column": "DayNight",
+			"prettyName": "DayNight"
+		},
+		{
+			"type": "text",
+			"column": "Tmax",
+			"prettyName": "Tmax"
+		},
+		{
+			"type": "text",
+			"column": "Tmin",
+			"prettyName": "Tmin"
+		},
+		{
+			"type": "text",
+			"column": "Tavg",
+			"prettyName": "Tavg"
+		},
+		{
+			"type": "text",
+			"column": "Temprange",
+			"prettyName": "Temprange"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "1899/12/30",
+					"text": "1899/12/30"
+				}
+			],
+			"column": "SunriseTim",
+			"prettyName": "SunriseTim"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "1899/12/30",
+					"text": "1899/12/30"
+				}
+			],
+			"column": "SunsetTime",
+			"prettyName": "SunsetTime"
+		},
+		{
+			"type": "text",
+			"column": "SnowFall",
+			"prettyName": "SnowFall"
+		},
+		{
+			"type": "text",
+			"column": "PrecipTota",
+			"prettyName": "PrecipTota"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "Fault",
+			"prettyName": "Fault"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "Doored",
+			"prettyName": "Doored"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "HelmetDocu",
+			"prettyName": "HelmetDocu"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "TaxiFinal",
+			"prettyName": "TaxiFinal"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				}
+			],
+			"column": "hitrunfina",
+			"prettyName": "hitrunfina"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				}
+			],
+			"column": "AlcoholFin",
+			"prettyName": "AlcoholFin"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 99,
+					"text": 99
+				}
+			],
+			"column": "INJURED",
+			"prettyName": "INJURED"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 99,
+					"text": 99
+				}
+			],
+			"column": "TRANSPORTE",
+			"prettyName": "TRANSPORTE"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": 0
+				},
+				{
+					"id": 1,
+					"text": 1
+				},
+				{
+					"id": 2,
+					"text": 2
+				},
+				{
+					"id": 99,
+					"text": 99
+				}
+			],
+			"column": "TREATED",
+			"prettyName": "TREATED"
+		},
+		{
+			"type": "text",
+			"column": "ID_1",
+			"prettyName": "ID_1"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "FEMALE",
+					"text": "FEMALE"
+				},
+				{
+					"id": "MALE",
+					"text": "MALE"
+				},
+				{
+					"id": "99",
+					"text": "99"
+				}
+			],
+			"column": "GENDER",
+			"prettyName": "GENDER"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": "99",
+					"text": "99"
+				},
+				{
+					"id": "ASIAN",
+					"text": "ASIAN"
+				},
+				{
+					"id": "BLACK HISPANIC",
+					"text": "BLACK HISPANIC"
+				},
+				{
+					"id": "BLACK NON-HISPANIC",
+					"text": "BLACK NON-HISPANIC"
+				},
+				{
+					"id": "EAST INDIAN",
+					"text": "EAST INDIAN"
+				},
+				{
+					"id": "WHITE HISPANIC",
+					"text": "WHITE HISPANIC"
+				},
+				{
+					"id": "WHITE NON-HISPANIC",
+					"text": "WHITE NON-HISPANIC"
+				},
+				{
+					"id": "NATIVE AMERICAN",
+					"text": "NATIVE AMERICAN"
+				},
+				{
+					"id": "WHITE NON-HISPANIC ",
+					"text": "WHITE NON-HISPANIC "
+				}
+			],
+			"column": "ETHNICITY",
+			"prettyName": "ETHNICITY"
+		},
+		{
+			"type": "text",
+			"column": "AGE",
+			"prettyName": "AGE"
+		}
+	]
+}

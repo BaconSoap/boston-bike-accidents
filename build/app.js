@@ -165,7 +165,7 @@ var bostonBiking;
             var _this = this;
             var deferred = this.$q.defer();
 
-            this.$http.get('data/filters.json').then(function (data) {
+            this.$http.get('data/generated_filters.json').then(function (data) {
                 return _this.updateFilters(data.data.filters);
             }).then(function (data) {
                 return deferred.resolve(data);
@@ -222,7 +222,7 @@ var bostonBiking;
             this.cachedFunctions = {};
         }
         DataFilterFunctionFactory.prototype.create = function (dataFilter) {
-            if (dataFilter.type === 'text') {
+            if (dataFilter.type === 'text' || dataFilter.type === 'multi') {
                 return this.createTextDataFilter(dataFilter.value, dataFilter.column);
             }
             return function (str) {
@@ -231,16 +231,17 @@ var bostonBiking;
         };
 
         DataFilterFunctionFactory.prototype.createTextDataFilter = function (text, column) {
+            var lowerText = (!!text ? text.toLowerCase() : text);
             return function (featureData) {
                 if (text === '' || text === null || typeof text === 'undefined') {
                     return true;
                 }
-                var data = featureData.properties[column];
+                var data = '' + featureData.properties[column];
                 if (!data) {
                     return false;
                 }
 
-                return data.toLowerCase().indexOf(text) > -1;
+                return data.toLowerCase().indexOf(lowerText) > -1;
             };
         };
         return DataFilterFunctionFactory;

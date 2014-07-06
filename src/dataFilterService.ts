@@ -12,7 +12,7 @@ module bostonBiking {
 		public getDataFilters() : ng.IPromise<Array<DataFilter>> {
 			var deferred = this.$q.defer<Array<DataFilter>>();
 
-			this.$http.get('data/filters.json')
+			this.$http.get('data/generated_filters.json')
 				.then(data => this.updateFilters((<any>data.data).filters))
 				.then(data => deferred.resolve(data));
 
@@ -65,19 +65,20 @@ module bostonBiking {
 		}
 
 		public create(dataFilter: DataFilter) : L.mapbox.FilterFunction {
-			if (dataFilter.type === 'text') {
+			if (dataFilter.type === 'text' || dataFilter.type === 'multi') {
 				return this.createTextDataFilter(dataFilter.value, dataFilter.column);
 			}
 			return (str: any) => true;
 		}
 
 		private createTextDataFilter(text: string, column: string): L.mapbox.FilterFunction {
+			var lowerText = (!!text? text.toLowerCase(): text);
 			return function(featureData: any) {
 				if (text === '' || text === null || typeof text === 'undefined') { return true; }
-				var data = featureData.properties[column];
+				var data = '' +  featureData.properties[column];
 				if (!data) { return false; }
 
-				return data.toLowerCase().indexOf(text) > -1;
+				return data.toLowerCase().indexOf(lowerText) > -1;
 			};
 		}
 	}
