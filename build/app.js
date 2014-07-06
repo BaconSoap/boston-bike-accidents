@@ -1,3 +1,83 @@
+///<reference path="../typings/tsd.d.ts" />
+var bostonBiking;
+(function (bostonBiking) {
+    var CircleMarkerLayer = (function () {
+        function CircleMarkerLayer(baseData) {
+            this._markers = [];
+            this.SetBaseData(baseData);
+        }
+        CircleMarkerLayer.prototype.SetBaseData = function (baseData) {
+            this._baseData = baseData;
+            this._dirty = true;
+            this.CreateMarkers();
+        };
+
+        CircleMarkerLayer.prototype.CreateMarkers = function () {
+            this._markers = [];
+
+            for (var i = 0; i < this._baseData.features.length; i++) {
+                var feature = this._baseData.features[i];
+                var marker = L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], CircleMarkerLayer._visibleMarker);
+                marker.properties = feature.properties;
+                this._markers.push(marker);
+            }
+            this._markerLayer = L.featureGroup(this._markers);
+        };
+
+        CircleMarkerLayer.prototype.BindMap = function (map) {
+            map.addLayer(this._markerLayer);
+            map.fitBounds(this._markerLayer.getBounds());
+        };
+
+        CircleMarkerLayer.prototype.SetFilter = function (filter) {
+            this._filterFunction = filter;
+            this._dirty = true;
+        };
+
+        CircleMarkerLayer.prototype.RunFilter = function () {
+            if (!this._dirty) {
+                return;
+            }
+
+            for (var i = 0; i < this._markers.length; i++) {
+                var marker = this._markers[i];
+                if (!this._filterFunction(marker)) {
+                    marker.setStyle(CircleMarkerLayer._invisibleMarker);
+                } else {
+                    marker.setStyle(CircleMarkerLayer._visibleMarker);
+                }
+            }
+
+            this._dirty = false;
+        };
+
+        CircleMarkerLayer.prototype.getBounds = function () {
+            return this._markerLayer.getBounds();
+        };
+        CircleMarkerLayer._visibleMarker = {
+            radius: 4,
+            fillOpacity: 0.7,
+            color: '#121212',
+            fillColor: '#990909',
+            opacity: 1,
+            weight: 0.5,
+            clickable: true
+        };
+
+        CircleMarkerLayer._invisibleMarker = {
+            radius: 0,
+            fillOpacity: 0,
+            opacity: 0,
+            weight: 0,
+            clickable: false
+        };
+        return CircleMarkerLayer;
+    })();
+    bostonBiking.CircleMarkerLayer = CircleMarkerLayer;
+})(bostonBiking || (bostonBiking = {}));
+///<reference path="../typings/tsd.d.ts" />
+///<reference path="CircleMarkerLayer.ts" />
+
 var bostonBiking;
 (function (bostonBiking) {
     var app = angular.module('bostonBiking.map', []);
@@ -34,32 +114,13 @@ var bostonBiking;
             this.map = map;
         }
         Map.prototype.addFeatures = function (geoJson) {
-            var geo = L.mapbox.featureLayer(geoJson, {
-                pointToLayer: function (feature, latLng) {
-                    return L.circleMarker(latLng, {
-                        radius: 4,
-                        fillOpacity: 0.7,
-                        color: '#121212',
-                        fillColor: '#990909',
-                        opacity: 1,
-                        weight: 0.5
-                    });
-                }
-            });
-
-            geo.on('ready', function () {
-                this.eachLayer(function (marker) {
-                    marker.setIcon(null);
-                });
-            });
-            geo.addTo(this.map);
-            this.map.featureLayer = geo;
+            this._markerLayer = new bostonBiking.CircleMarkerLayer(geoJson);
+            this._markerLayer.BindMap(this.map);
         };
 
         Map.prototype.setFilter = function (dataFilter) {
-            console.log(dataFilter);
-            console.log(dataFilter({ properties: { GENDER: 'male' } }));
-            this.map.featureLayer.setFilter(dataFilter);
+            this._markerLayer.SetFilter(dataFilter);
+            this._markerLayer.RunFilter();
         };
         return Map;
     })();

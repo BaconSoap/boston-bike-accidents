@@ -1,3 +1,6 @@
+///<reference path="../typings/tsd.d.ts" />
+///<reference path="CircleMarkerLayer.ts" />
+
 declare var ambient: {mapKey: string};
 
 module bostonBiking {
@@ -30,35 +33,18 @@ module bostonBiking {
 	app.service('mapService', MapService);
 
 	export class Map {
+		private _markerLayer: bostonBiking.CircleMarkerLayer;
+
 		public constructor(private map: L.mapbox.Map) {}
 
 		public addFeatures(geoJson: any) {
-			var geo = L.mapbox.featureLayer(geoJson, {
-				pointToLayer: (feature, latLng) => {
-					return L.circleMarker(latLng, {
-						radius: 4,
-						fillOpacity: 0.7,
-						color: '#121212',
-						fillColor: '#990909',
-						opacity: 1,
-						weight: 0.5
-					});
-				}
-			});
-
-			geo.on('ready', function() {
-				this.eachLayer(marker => {
-					marker.setIcon(null);
-				});
-			});
-			geo.addTo(this.map);
-			this.map.featureLayer = <any>geo;
+			this._markerLayer = new bostonBiking.CircleMarkerLayer(geoJson);
+			this._markerLayer.BindMap(this.map);
 		}
 
 		public setFilter(dataFilter: L.mapbox.FilterFunction) {
-			console.log(dataFilter);
-			console.log(dataFilter({properties: {GENDER: 'male'}}));
-			this.map.featureLayer.setFilter(dataFilter);
+			this._markerLayer.SetFilter(dataFilter);
+			this._markerLayer.RunFilter();
 		}
 	}
 }

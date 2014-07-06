@@ -71,7 +71,7 @@ module bostonBiking {
 			return (str: any) => true;
 		}
 
-		private createTextDataFilter(text: string, column: string) :L.mapbox.FilterFunction {
+		private createTextDataFilter(text: string, column: string): L.mapbox.FilterFunction {
 			return function(featureData: any) {
 				if (text === '' || text === null) { return true; }
 				var data = featureData.properties[column];
