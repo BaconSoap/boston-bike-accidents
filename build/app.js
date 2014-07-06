@@ -232,7 +232,7 @@ var bostonBiking;
 
         DataFilterFunctionFactory.prototype.createTextDataFilter = function (text, column) {
             return function (featureData) {
-                if (text === '' || text === null) {
+                if (text === '' || text === null || typeof text === 'undefined') {
                     return true;
                 }
                 var data = featureData.properties[column];
