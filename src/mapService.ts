@@ -39,12 +39,12 @@ module bostonBiking {
 
 		public addFeatures(geoJson: any) {
 			this._markerLayer = new bostonBiking.CircleMarkerLayer(geoJson);
-			this._markerLayer.BindMap(this.map);
+			this._markerLayer.bindMap(this.map);
 		}
 
 		public setFilter(dataFilter: L.mapbox.FilterFunction) {
-			this._markerLayer.SetFilter(dataFilter);
-			this._markerLayer.RunFilter();
+			this._markerLayer.setFilter(dataFilter);
+			this._markerLayer.runFilter();
 		}
 	}
 }

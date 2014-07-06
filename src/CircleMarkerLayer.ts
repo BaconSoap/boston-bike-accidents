@@ -29,16 +29,16 @@ module bostonBiking {
 
 		public constructor(baseData: any) {
 			this._markers = [];
-			this.SetBaseData(baseData);
+			this.setBaseData(baseData);
 		}
 
-		public SetBaseData(baseData: any) {
+		public setBaseData(baseData: any) {
 			this._baseData = baseData;
 			this._dirty = true;
-			this.CreateMarkers();
+			this.createMarkers();
 		}
 
-		public CreateMarkers() {
+		public createMarkers() {
 			this._markers = [];
 
 			for (var i = 0; i < this._baseData.features.length; i++) {
@@ -50,17 +50,17 @@ module bostonBiking {
 			this._markerLayer = L.featureGroup(this._markers);
 		}
 
-		public BindMap(map: L.Map) {
+		public bindMap(map: L.Map) {
 			map.addLayer(this._markerLayer);
 			map.fitBounds(this._markerLayer.getBounds());
 		}
 
-		public SetFilter(filter: (data: any) => boolean) {
+		public setFilter(filter: (data: any) => boolean) {
 			this._filterFunction = filter;
 			this._dirty = true;
 		}
 
-		public RunFilter() {
+		public runFilter() {
 			if (!this._dirty) {
 				return;
 			}
