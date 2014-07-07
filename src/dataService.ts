@@ -8,7 +8,7 @@ module bostonBiking {
 		public getData(): ng.IPromise<L.GeoJSON> {
 			var deferred = this.$q.defer<L.GeoJSON>();
 
-			this.$http.get('/data/bikes_raw.json').then(data => deferred.resolve(data.data));
+			this.$http.get(config.dataUrl).then(data => deferred.resolve(data.data));
 
 			return deferred.promise;
 		}

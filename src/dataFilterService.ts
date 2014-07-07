@@ -14,7 +14,7 @@ module bostonBiking {
 		public getDataFilters() : ng.IPromise<Array<DataFilter>> {
 			var deferred = this.$q.defer<Array<DataFilter>>();
 
-			this.$http.get('data/generated_filters.json')
+			this.$http.get(config.filterUrl)
 				.then(data => this.updateFilters((<any>data.data).filters))
 				.then(data => deferred.resolve(data));
 
@@ -38,19 +38,8 @@ module bostonBiking {
 		}
 
 		private createFilters(filters: Array<DataFilter>): Array<DataFilter> {
-			filters = filters
-				.map(this.createFilter)
-				.map(<(any) => any>this.populateValues);
 			filters.forEach(filter => this.addFilterFunction(filter));
 			return filters;
-		}
-
-		private createFilter(filter: DataFilter): DataFilter {
-			return filter;
-		}
-
-		private populateValues(filter: DataFilter, dataPoints?: L.GeoJSON): DataFilter {
-			return filter;
 		}
 
 		private addFilterFunction(filter: DataFilter) {

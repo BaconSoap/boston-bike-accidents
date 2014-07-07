@@ -78,7 +78,9 @@ var bostonBiking;
 var bostonBiking;
 (function (bostonBiking) {
     bostonBiking.config = {
-        provider: 1 /* Stamen */
+        provider: 1 /* Stamen */,
+        dataUrl: '/data/bikes_raw.json',
+        filterUrl: '/data/generated_filters.json'
     };
 
     (function (MapProvider) {
@@ -176,7 +178,7 @@ var bostonBiking;
         DataService.prototype.getData = function () {
             var deferred = this.$q.defer();
 
-            this.$http.get('/data/bikes_raw.json').then(function (data) {
+            this.$http.get(bostonBiking.config.dataUrl).then(function (data) {
                 return deferred.resolve(data.data);
             });
 
@@ -204,7 +206,7 @@ var bostonBiking;
             var _this = this;
             var deferred = this.$q.defer();
 
-            this.$http.get('data/generated_filters.json').then(function (data) {
+            this.$http.get(bostonBiking.config.filterUrl).then(function (data) {
                 return _this.updateFilters(data.data.filters);
             }).then(function (data) {
                 return deferred.resolve(data);
@@ -233,19 +235,10 @@ var bostonBiking;
 
         DataFilterService.prototype.createFilters = function (filters) {
             var _this = this;
-            filters = filters.map(this.createFilter).map(this.populateValues);
             filters.forEach(function (filter) {
                 return _this.addFilterFunction(filter);
             });
             return filters;
-        };
-
-        DataFilterService.prototype.createFilter = function (filter) {
-            return filter;
-        };
-
-        DataFilterService.prototype.populateValues = function (filter, dataPoints) {
-            return filter;
         };
 
         DataFilterService.prototype.addFilterFunction = function (filter) {

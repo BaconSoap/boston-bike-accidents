@@ -28,7 +28,7 @@
         </div>
         <div class="left" ng-controller="filterCtrl">
             <ul>
-                <li ng-repeat="dataFilter in dataFilters">
+                <li ng-repeat="dataFilter in dataFilters" >
                     <label>
                         <input type="text" ng-model="dataFilter.value" ng-change="updateFilters()" ng-if="dataFilter.type == 'text'">
                         <select multiple ui-select2="viewModel.multiSelect2Options" ng-model="dataFilter.value" ng-change="updateFilters()" ng-if="dataFilter.type == 'multi'">

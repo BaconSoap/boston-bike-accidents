@@ -3,14 +3,14 @@
 		{
 			"type": "text",
 			"column": "ID",
-			"prettyName": "ID"
+			"prettyName": "Incident Id"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "Unknown"
 				},
 				{
 					"id": 2009,
@@ -30,12 +30,12 @@
 				}
 			],
 			"column": "YEAR",
-			"prettyName": "YEAR"
+			"prettyName": "Year"
 		},
 		{
 			"type": "date",
 			"column": "DATE",
-			"prettyName": "DATE"
+			"prettyName": "Date"
 		},
 		{
 			"type": "multi",
@@ -70,56 +70,45 @@
 				}
 			],
 			"column": "DAY_WEEK",
-			"prettyName": "DAY_WEEK"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": "1899/12/30",
-					"text": "1899/12/30"
-				}
-			],
-			"column": "TIME",
-			"prettyName": "TIME"
+			"prettyName": "Day of Week"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": "BR",
-					"text": "BR"
+					"text": "Bicycle Related"
 				},
 				{
 					"id": "BVA",
-					"text": "BVA"
+					"text": "Bicycle-Auto"
 				},
 				{
 					"id": "BVB",
-					"text": "BVB"
+					"text": "Bicycle-Bicycle"
 				},
 				{
 					"id": "BVP",
-					"text": "BVP"
+					"text": "Bicycle-Pedestrian"
 				},
 				{
 					"id": "CO",
-					"text": "CO"
+					"text": "Cyclist Only"
 				}
 			],
 			"column": "TYPE",
-			"prettyName": "TYPE"
+			"prettyName": "Type"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": "CALL SCREENING",
-					"text": "CALL SCREENING"
+					"text": "Call Screening"
 				},
 				{
 					"id": "E911",
-					"text": "E911"
+					"text": "911 Call"
 				},
 				{
 					"id": "N/A",
@@ -127,112 +116,76 @@
 				},
 				{
 					"id": "ON-SITE",
-					"text": "ON-SITE"
+					"text": "Officer on Site"
 				},
 				{
 					"id": "PHONE-IN",
-					"text": "PHONE-IN"
+					"text": "Station Call"
 				},
 				{
 					"id": "WALK-IN",
-					"text": "WALK-IN"
+					"text": "Station Walk-in"
 				}
 			],
 			"column": "SOURCE",
-			"prettyName": "SOURCE"
-		},
-		{
-			"type": "text",
-			"column": "XFINAL",
-			"prettyName": "XFINAL"
-		},
-		{
-			"type": "text",
-			"column": "Xkm",
-			"prettyName": "Xkm"
-		},
-		{
-			"type": "text",
-			"column": "YFINAL",
-			"prettyName": "YFINAL"
-		},
-		{
-			"type": "text",
-			"column": "Ykm",
-			"prettyName": "Ykm"
+			"prettyName": "Source"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
-				}
-			],
-			"column": "Address",
-			"prettyName": "Address"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "Main",
-			"prettyName": "Main"
+			"prettyName": "Main Street?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": "Com",
-					"text": "Com"
+					"text": "Commercial"
 				},
 				{
 					"id": "Emp",
-					"text": "Emp"
+					"text": "No Zoning"
 				},
 				{
 					"id": "Exe",
-					"text": "Exe"
+					"text": "Exempt"
 				},
 				{
 					"id": "Ind",
-					"text": "Ind"
+					"text": "Industrial"
 				},
 				{
 					"id": "Res",
-					"text": "Res"
+					"text": "Residential"
 				}
 			],
 			"column": "RoadType",
-			"prettyName": "RoadType"
+			"prettyName": "Road Type"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "ISINTERSEC",
-			"prettyName": "ISINTERSEC"
-		},
-		{
-			"type": "text",
-			"column": "TRACT",
-			"prettyName": "TRACT"
+			"prettyName": "Intersection?"
 		},
 		{
 			"type": "multi",
@@ -279,7 +232,7 @@
 				}
 			],
 			"column": "CouncilDIS",
-			"prettyName": "CouncilDIS"
+			"prettyName": "Council District"
 		},
 		{
 			"type": "multi",
@@ -322,275 +275,406 @@
 				}
 			],
 			"column": "Councillor",
-			"prettyName": "Councillor"
-		},
-		{
-			"type": "text",
-			"column": "PlanningDi",
-			"prettyName": "PlanningDi"
-		},
-		{
-			"type": "text",
-			"column": "OIF1",
-			"prettyName": "OIF1"
-		},
-		{
-			"type": "text",
-			"column": "OIF2",
-			"prettyName": "OIF2"
+			"prettyName": "Councillor (2013)"
 		},
 		{
 			"type": "multi",
 			"values": [
-				{
-					"id": 0,
-					"text": 0
-				},
-				{
-					"id": 3,
-					"text": 3
-				},
-				{
-					"id": 10,
-					"text": 10
-				},
-				{
-					"id": 16,
-					"text": 16
-				},
-				{
-					"id": 98,
-					"text": 98
-				}
-			],
-			"column": "OIF3",
-			"prettyName": "OIF3"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": 0,
-					"text": 0
-				},
-				{
-					"id": 11,
-					"text": 11
-				},
-				{
-					"id": 98,
-					"text": 98
-				}
-			],
-			"column": "OIF4",
-			"prettyName": "OIF4"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": 0,
-					"text": 0
-				},
 				{
 					"id": 1,
-					"text": 1
-				}
-			],
-			"column": "BLFinal",
-			"prettyName": "BLFinal"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": 0,
-					"text": 0
-				},
-				{
-					"id": 1,
-					"text": 1
+					"text": "Car ran red light"
 				},
 				{
 					"id": 2,
-					"text": 2
+					"text": "Car ran a stop sign"
+				},
+				{
+					"id": 3,
+					"text": "Car was speeding"
+				},
+				{
+					"id": 4,
+					"text": "Bike ran red light"
+				},
+				{
+					"id": 5,
+					"text": "Bike ran a stop sign"
+				},
+				{
+					"id": 6,
+					"text": "Bike was speeding"
+				},
+				{
+					"id": 7,
+					"text": "Cyclist in oncoming traffic"
+				},
+				{
+					"id": 8,
+					"text": "Write-in"
+				},
+				{
+					"id": 10,
+					"text": "Poor visibility of bike"
+				},
+				{
+					"id": 11,
+					"text": "Poor visibility of car"
+				},
+				{
+					"id": 14,
+					"text": "Personal item caught"
+				},
+				{
+					"id": 15,
+					"text": "Car door opened and struck biker"
+				},
+				{
+					"id": 16,
+					"text": "Cyclist hit parked cat"
+				},
+				{
+					"id": 17,
+					"text": "Car made right turn and crashed into bicyclist in bike lane."
+				}
+			],
+			"column": "OIF1",
+			"prettyName": "Influencing Factor 1"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 1,
+					"text": "Car ran red light"
+				},
+				{
+					"id": 2,
+					"text": "Car ran a stop sign"
+				},
+				{
+					"id": 3,
+					"text": "Car was speeding"
+				},
+				{
+					"id": 4,
+					"text": "Bike ran red light"
+				},
+				{
+					"id": 5,
+					"text": "Bike ran a stop sign"
+				},
+				{
+					"id": 6,
+					"text": "Bike was speeding"
+				},
+				{
+					"id": 7,
+					"text": "Cyclist in oncoming traffic"
+				},
+				{
+					"id": 8,
+					"text": "Write-in"
+				},
+				{
+					"id": 10,
+					"text": "Poor visibility of bike"
+				},
+				{
+					"id": 11,
+					"text": "Poor visibility of car"
+				},
+				{
+					"id": 14,
+					"text": "Personal item caught"
+				},
+				{
+					"id": 15,
+					"text": "Car door opened and struck biker"
+				},
+				{
+					"id": 16,
+					"text": "Cyclist hit parked cat"
+				},
+				{
+					"id": 17,
+					"text": "Car made right turn and crashed into bicyclist in bike lane."
+				}
+			],
+			"column": "OIF2",
+			"prettyName": "Influencing Factor 2"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 1,
+					"text": "Car ran red light"
+				},
+				{
+					"id": 2,
+					"text": "Car ran a stop sign"
+				},
+				{
+					"id": 3,
+					"text": "Car was speeding"
+				},
+				{
+					"id": 4,
+					"text": "Bike ran red light"
+				},
+				{
+					"id": 5,
+					"text": "Bike ran a stop sign"
+				},
+				{
+					"id": 6,
+					"text": "Bike was speeding"
+				},
+				{
+					"id": 7,
+					"text": "Cyclist in oncoming traffic"
+				},
+				{
+					"id": 8,
+					"text": "Write-in"
+				},
+				{
+					"id": 10,
+					"text": "Poor visibility of bike"
+				},
+				{
+					"id": 11,
+					"text": "Poor visibility of car"
+				},
+				{
+					"id": 14,
+					"text": "Personal item caught"
+				},
+				{
+					"id": 15,
+					"text": "Car door opened and struck biker"
+				},
+				{
+					"id": 16,
+					"text": "Cyclist hit parked cat"
+				},
+				{
+					"id": 17,
+					"text": "Car made right turn and crashed into bicyclist in bike lane."
+				}
+			],
+			"column": "OIF3",
+			"prettyName": "Influencing Factor 3"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 1,
+					"text": "Car ran red light"
+				},
+				{
+					"id": 2,
+					"text": "Car ran a stop sign"
+				},
+				{
+					"id": 3,
+					"text": "Car was speeding"
+				},
+				{
+					"id": 4,
+					"text": "Bike ran red light"
+				},
+				{
+					"id": 5,
+					"text": "Bike ran a stop sign"
+				},
+				{
+					"id": 6,
+					"text": "Bike was speeding"
+				},
+				{
+					"id": 7,
+					"text": "Cyclist in oncoming traffic"
+				},
+				{
+					"id": 8,
+					"text": "Write-in"
+				},
+				{
+					"id": 10,
+					"text": "Poor visibility of bike"
+				},
+				{
+					"id": 11,
+					"text": "Poor visibility of car"
+				},
+				{
+					"id": 14,
+					"text": "Personal item caught"
+				},
+				{
+					"id": 15,
+					"text": "Car door opened and struck biker"
+				},
+				{
+					"id": 16,
+					"text": "Cyclist hit parked cat"
+				},
+				{
+					"id": 17,
+					"text": "Car made right turn and crashed into bicyclist in bike lane."
+				}
+			],
+			"column": "OIF4",
+			"prettyName": "Influencing Factor 4"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 0,
+					"text": "No"
+				},
+				{
+					"id": 1,
+					"text": "Yes"
+				}
+			],
+			"column": "BLFinal",
+			"prettyName": "Bikelane mentioned?"
+		},
+		{
+			"type": "multi",
+			"values": [
+				{
+					"id": 1,
+					"text": "Yes"
+				},
+				{
+					"id": 2,
+					"text": "No"
 				},
 				{
 					"id": 99,
-					"text": 99
+					"text": "Unknown"
 				}
 			],
 			"column": "CS",
-			"prettyName": "CS"
+			"prettyName": "Conflicting Stories?"
 		},
 		{
 			"type": "text",
 			"column": "LIGHTING",
-			"prettyName": "LIGHTING"
-		},
-		{
-			"type": "multi",
-			"values": [],
-			"column": "Indoor",
-			"prettyName": "Indoor"
+			"prettyName": "Lighting"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
-					"id": 0,
-					"text": 0
-				},
-				{
 					"id": 1,
-					"text": 1
+					"text": "Explicitly No"
 				},
 				{
 					"id": 2,
-					"text": 2
-				},
-				{
-					"id": 99,
-					"text": 99
+					"text": "Yes"
 				}
 			],
 			"column": "Light",
-			"prettyName": "Light"
+			"prettyName": "Light Issues?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "LightEng",
-			"prettyName": "LightEng"
+			"prettyName": "Light Fixture Issues?"
 		},
 		{
 			"type": "text",
 			"column": "WEATHER",
-			"prettyName": "WEATHER"
+			"prettyName": "Weather"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "Unknown"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "None"
 				},
 				{
 					"id": 2,
-					"text": 2
+					"text": "Light"
 				},
 				{
 					"id": 3,
-					"text": 3
+					"text": "Heavy"
 				}
 			],
 			"column": "PrecipCond",
-			"prettyName": "PrecipCond"
+			"prettyName": "Precip Condition"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "Unknown"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Cold"
 				},
 				{
 					"id": 2,
-					"text": 2
+					"text": "Chilly"
 				},
 				{
 					"id": 3,
-					"text": 3
+					"text": "Warm"
 				}
 			],
 			"column": "AtmosCondi",
-			"prettyName": "AtmosCondi"
+			"prettyName": "Temperature Feel"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
-				},
-				{
-					"id": 1,
-					"text": 1
-				},
-				{
-					"id": 2,
-					"text": 2
+					"text": "Unknown"
 				},
 				{
 					"id": 3,
-					"text": 3
+					"text": "Sunrise"
+				},
+				{
+					"id": 1,
+					"text": "Day"
 				},
 				{
 					"id": 4,
-					"text": 4
+					"text": "Sunset"
+				},
+				{
+					"id": 2,
+					"text": "Night"
 				}
 			],
 			"column": "DayNight",
-			"prettyName": "DayNight"
-		},
-		{
-			"type": "text",
-			"column": "Tmax",
-			"prettyName": "Tmax"
-		},
-		{
-			"type": "text",
-			"column": "Tmin",
-			"prettyName": "Tmin"
-		},
-		{
-			"type": "text",
-			"column": "Tavg",
-			"prettyName": "Tavg"
-		},
-		{
-			"type": "text",
-			"column": "Temprange",
-			"prettyName": "Temprange"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": "1899/12/30",
-					"text": "1899/12/30"
-				}
-			],
-			"column": "SunriseTim",
-			"prettyName": "SunriseTim"
-		},
-		{
-			"type": "multi",
-			"values": [
-				{
-					"id": "1899/12/30",
-					"text": "1899/12/30"
-				}
-			],
-			"column": "SunsetTime",
-			"prettyName": "SunsetTime"
+			"prettyName": "Time of Day"
 		},
 		{
 			"type": "text",
@@ -607,117 +691,109 @@
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "Fault",
-			"prettyName": "Fault"
+			"prettyName": "Fault Assigned?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "Doored",
-			"prettyName": "Doored"
+			"prettyName": "Doored?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No/Unknown"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "HelmetDocu",
-			"prettyName": "HelmetDocu"
+			"prettyName": "Helmet Worn?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "TaxiFinal",
-			"prettyName": "TaxiFinal"
+			"prettyName": "Taxi Involved?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
-				},
-				{
-					"id": 2,
-					"text": 2
+					"text": "Yes"
 				}
 			],
 			"column": "hitrunfina",
-			"prettyName": "hitrunfina"
+			"prettyName": "Hit-and-run?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
+					"text": "Yes"
 				}
 			],
 			"column": "AlcoholFin",
-			"prettyName": "AlcoholFin"
+			"prettyName": "Alcohol Involved?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": 0,
-					"text": 0
+					"text": "No"
 				},
 				{
 					"id": 1,
-					"text": 1
-				},
-				{
-					"id": 2,
-					"text": 2
+					"text": "Yes"
 				},
 				{
 					"id": 99,
-					"text": 99
+					"text": "Unknown"
 				}
 			],
 			"column": "INJURED",
-			"prettyName": "INJURED"
+			"prettyName": "Any Injured?"
 		},
 		{
 			"type": "multi",
@@ -740,7 +816,7 @@
 				}
 			],
 			"column": "TRANSPORTE",
-			"prettyName": "TRANSPORTE"
+			"prettyName": "Ambulence Ride?"
 		},
 		{
 			"type": "multi",
@@ -763,66 +839,61 @@
 				}
 			],
 			"column": "TREATED",
-			"prettyName": "TREATED"
-		},
-		{
-			"type": "text",
-			"column": "ID_1",
-			"prettyName": "ID_1"
+			"prettyName": "Treated?"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": "FEMALE",
-					"text": "FEMALE"
+					"text": "Female"
 				},
 				{
 					"id": "MALE",
-					"text": "MALE"
+					"text": "Male"
 				},
 				{
 					"id": "99",
-					"text": "99"
+					"text": "Unknown"
 				}
 			],
 			"column": "GENDER",
-			"prettyName": "GENDER"
+			"prettyName": "Gender"
 		},
 		{
 			"type": "multi",
 			"values": [
 				{
 					"id": "99",
-					"text": "99"
+					"text": "Unknown"
 				},
 				{
 					"id": "ASIAN",
-					"text": "ASIAN"
+					"text": "Asian"
 				},
 				{
 					"id": "BLACK HISPANIC",
-					"text": "BLACK HISPANIC"
+					"text": "Black Hispanic"
 				},
 				{
 					"id": "BLACK NON-HISPANIC",
-					"text": "BLACK NON-HISPANIC"
+					"text": "Black non-Hispanic"
 				},
 				{
 					"id": "EAST INDIAN",
-					"text": "EAST INDIAN"
+					"text": "East Indian"
 				},
 				{
 					"id": "WHITE HISPANIC",
-					"text": "WHITE HISPANIC"
+					"text": "White Hispanic"
 				},
 				{
 					"id": "WHITE NON-HISPANIC",
-					"text": "WHITE NON-HISPANIC"
+					"text": "White non-Hispanic"
 				},
 				{
 					"id": "NATIVE AMERICAN",
-					"text": "NATIVE AMERICAN"
+					"text": "Native American"
 				},
 				{
 					"id": "WHITE NON-HISPANIC ",
@@ -830,12 +901,12 @@
 				}
 			],
 			"column": "ETHNICITY",
-			"prettyName": "ETHNICITY"
+			"prettyName": "Ethnicity"
 		},
 		{
 			"type": "text",
 			"column": "AGE",
-			"prettyName": "AGE"
+			"prettyName": "Age"
 		}
 	]
 }
