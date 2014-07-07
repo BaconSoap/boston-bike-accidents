@@ -5,3 +5,4 @@ typings
 data/bikes_raw.json
 data/bikes_filtered.json
 secrets.js
+release.zip
