@@ -76,7 +76,7 @@ module bostonBiking {
 		}
 
 		private createTextDataFilter(text: string, column: string): L.mapbox.FilterFunction {
-			var lowerText = (!!text? text.toLowerCase(): text);
+			var lowerText = (!!text ? text.toLowerCase() : text);
 			return function(featureData: any) {
 				if (text === '' || text === null || typeof text === 'undefined') { return true; }
 				var data = '' +  featureData.properties[column];
@@ -89,12 +89,12 @@ module bostonBiking {
 		private createMultiSelect2DataFilter(values: Array<string>, column: string): L.mapbox.FilterFunction {
 			var lowerValues = _.map(values, val => (val + '').toLowerCase());
 			return function(featureData: any) {
-				if (lowerValues.length == 0) { return true; }
+				if (lowerValues.length === 0) { return true; }
 				var data = '' + featureData.properties[column];
 				if (!data) { return false; }
 
 				return lowerValues.indexOf(data.toLowerCase()) > -1;
-			}
+			};
 		}
 	}
 

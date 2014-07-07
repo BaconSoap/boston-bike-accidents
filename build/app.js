@@ -75,8 +75,21 @@ var bostonBiking;
     })();
     bostonBiking.CircleMarkerLayer = CircleMarkerLayer;
 })(bostonBiking || (bostonBiking = {}));
+var bostonBiking;
+(function (bostonBiking) {
+    bostonBiking.config = {
+        provider: 1 /* Stamen */
+    };
+
+    (function (MapProvider) {
+        MapProvider[MapProvider["Mapbox"] = 0] = "Mapbox";
+        MapProvider[MapProvider["Stamen"] = 1] = "Stamen";
+    })(bostonBiking.MapProvider || (bostonBiking.MapProvider = {}));
+    var MapProvider = bostonBiking.MapProvider;
+})(bostonBiking || (bostonBiking = {}));
 ///<reference path="../typings/tsd.d.ts" />
 ///<reference path="CircleMarkerLayer.ts" />
+///<reference path="config.ts" />
 
 var bostonBiking;
 (function (bostonBiking) {
@@ -93,15 +106,16 @@ var bostonBiking;
             }
             var deferred = this.$q.defer();
             this.mapPromise = deferred.promise;
+            var resolve = function () {
+                var map = new Map(lMap);
+                deferred.resolve(map);
+            };
 
             var lMap;
-            if (false) {
+            if (bostonBiking.config.provider === 0 /* Mapbox */) {
                 lMap = L.mapbox.map('map-canvas', ambient.mapKey);
-                lMap.on('load', function () {
-                    var map = new Map(lMap);
-                    deferred.resolve(map);
-                });
-            } else {
+                lMap.once('load', resolve);
+            } else if (bostonBiking.config.provider === 1 /* Stamen */) {
                 lMap = L.mapbox.map('map-canvas');
 
                 var tl = L.tileLayer('http://{s}tile.stamen.com/terrain/{z}/{x}/{y}.png', {
@@ -116,15 +130,13 @@ var bostonBiking;
                     'maxZoom': 18,
                     'attribution': 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
                 });
-                lMap.options.maxZoom = 18;
-                lMap.options.minZoom = 12;
                 tl.addTo(lMap);
-                lMap.setView([42.3490298, -71.0619507], 15);
-                tl.on('load', function () {
-                    var map = new Map(lMap);
-                    deferred.resolve(map);
-                });
+                tl.once('load', resolve);
             }
+
+            lMap.options.maxZoom = 18;
+            lMap.options.minZoom = 12;
+            lMap.setView([42.3490298, -71.0619507], 15);
 
             return this.mapPromise;
         };
@@ -279,7 +291,7 @@ var bostonBiking;
                 return (val + '').toLowerCase();
             });
             return function (featureData) {
-                if (lowerValues.length == 0) {
+                if (lowerValues.length === 0) {
                     return true;
                 }
                 var data = '' + featureData.properties[column];

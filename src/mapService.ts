@@ -1,5 +1,6 @@
 ///<reference path="../typings/tsd.d.ts" />
 ///<reference path="CircleMarkerLayer.ts" />
+///<reference path="config.ts" />
 
 declare var ambient: {mapKey: string};
 
@@ -19,15 +20,16 @@ module bostonBiking {
 			}
 			var deferred = this.$q.defer<Map>();
 			this.mapPromise = deferred.promise;
+			var resolve = () => {
+				var map = new Map(lMap);
+				deferred.resolve(map);
+			};
 
 			var lMap: any;
-			if (false) {
+			if (config.provider === MapProvider.Mapbox) {
 				lMap = L.mapbox.map('map-canvas', ambient.mapKey);
-				lMap.on('load', () => {
-					var map = new Map(lMap);
-					deferred.resolve(map);
-				});
-			} else {
+				lMap.once('load', resolve);
+			} else if (config.provider === MapProvider.Stamen) {
 
 				lMap = L.mapbox.map('map-canvas');
 
@@ -43,17 +45,13 @@ module bostonBiking {
 					'maxZoom': 18,
 					'attribution': 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
 				});
-				lMap.options.maxZoom = 18;
-				lMap.options.minZoom = 12;
 				tl.addTo(lMap);
-				lMap.setView([42.3490298,-71.0619507], 15);
-				tl.on('load', () => {
-					var map = new Map(lMap);
-					deferred.resolve(map);
-				});
+				tl.once('load', resolve);
 			}
 
-
+			lMap.options.maxZoom = 18;
+			lMap.options.minZoom = 12;
+			lMap.setView([42.3490298, -71.0619507], 15);
 
 			return this.mapPromise;
 		}
