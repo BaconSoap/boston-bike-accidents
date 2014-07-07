@@ -151,6 +151,7 @@ var bostonBiking;
 
     app.service('dataService', DataService);
 })(bostonBiking || (bostonBiking = {}));
+///<reference path="../typings/tsd.d.ts" />
 var bostonBiking;
 (function (bostonBiking) {
     var app = angular.module('bostonBiking.dataFilters', []);
@@ -222,8 +223,10 @@ var bostonBiking;
             this.cachedFunctions = {};
         }
         DataFilterFunctionFactory.prototype.create = function (dataFilter) {
-            if (dataFilter.type === 'text' || dataFilter.type === 'multi') {
+            if (dataFilter.type === 'text') {
                 return this.createTextDataFilter(dataFilter.value, dataFilter.column);
+            } else if (dataFilter.type === 'multi') {
+                return this.createMultiSelect2DataFilter(dataFilter.value, dataFilter.column);
             }
             return function (str) {
                 return true;
@@ -244,6 +247,23 @@ var bostonBiking;
                 return data.toLowerCase().indexOf(lowerText) > -1;
             };
         };
+
+        DataFilterFunctionFactory.prototype.createMultiSelect2DataFilter = function (values, column) {
+            var lowerValues = _.map(values, function (val) {
+                return (val + '').toLowerCase();
+            });
+            return function (featureData) {
+                if (lowerValues.length == 0) {
+                    return true;
+                }
+                var data = '' + featureData.properties[column];
+                if (!data) {
+                    return false;
+                }
+
+                return lowerValues.indexOf(data.toLowerCase()) > -1;
+            };
+        };
         return DataFilterFunctionFactory;
     })();
 
@@ -262,7 +282,7 @@ var bostonBiking;
 ///<reference path="dataFilterService.ts" />
 var bostonBiking;
 (function (bostonBiking) {
-    var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters']);
+    var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters', 'ui.select2']);
     app.controller('mapCtrl', [
         '$scope', 'mapService', 'dataService', 'dataFilterService',
         function ($scope, mapService, dataService, dataFilterService) {
@@ -280,6 +300,11 @@ var bostonBiking;
         function ($scope, mapService, dataService, dataFilterService) {
             $scope.updateFilters = function () {
                 $scope.map.setFilter(dataFilterService.combineFilters(dataFilterService.updateFilters($scope.dataFilters)));
+            };
+
+            $scope.viewModel = {};
+            $scope.viewModel.multiSelect2Options = {
+                multiple: true
             };
 
             dataFilterService.getDataFilters().then(function (filters) {

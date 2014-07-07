@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="css/index.css"/>
     <script type="text/javascript">window.L_PREFER_CANVAS = true;</script>
     <script src="secrets.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/select2/select2.js"></script>
+    <script src="bower_components/angular-ui-select2/src/select2.js"></script>
+    <link rel="stylesheet" href="bower_components/select2/select2.css" />
     <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
     <script src="build/app.js"></script>
@@ -24,7 +29,12 @@
         <div class="left" ng-controller="filterCtrl">
             <ul>
                 <li ng-repeat="dataFilter in dataFilters">
-                    <label><input type="text" ng-model="dataFilter.value" ng-change="updateFilters()"> {{dataFilter.prettyName}}</label>
+                    <label>
+                        <input type="text" ng-model="dataFilter.value" ng-change="updateFilters()" ng-if="dataFilter.type == 'text'">
+                        <select multiple ui-select2="viewModel.multiSelect2Options" ng-model="dataFilter.value" ng-change="updateFilters()" ng-if="dataFilter.type == 'multi'">
+                            <option ng-repeat="val in dataFilter.values" value="{{val.id}}">{{val.text}}</option>
+                        </select>
+                        {{dataFilter.prettyName}}</label>
                 </li>
             </ul>
         </div>

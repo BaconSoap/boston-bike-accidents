@@ -16,6 +16,9 @@
     },
     "leaflet/leaflet.d.ts": {
       "commit": "b40258ccaa0ba9fac889f668f5346f59880d6d66"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "e6a11b3cf228eacc13006558e6c9903ac7b4975b"
     }
   }
 }

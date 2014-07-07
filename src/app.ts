@@ -4,7 +4,7 @@
 ///<reference path="dataFilterService.ts" />
 
 module bostonBiking {
-	var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters']);
+	var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters', 'ui.select2']);
 	app.controller('mapCtrl',
 		['$scope', 'mapService', 'dataService', 'dataFilterService',
 		($scope, mapService: MapService, dataService: DataService, dataFilterService: DataFilterService) => {
@@ -24,6 +24,12 @@ module bostonBiking {
 
 			$scope.updateFilters = function() {
 				$scope.map.setFilter(dataFilterService.combineFilters(dataFilterService.updateFilters($scope.dataFilters)));
+			};
+
+			$scope.viewModel = {};
+			$scope.viewModel.multiSelect2Options = {
+				multiple: true
+				//width: 'resolve'
 			};
 
 			dataFilterService

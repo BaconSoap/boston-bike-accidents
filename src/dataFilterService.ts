@@ -1,3 +1,5 @@
+///<reference path="../typings/tsd.d.ts" />
+
 module bostonBiking {
 	var app = angular.module('bostonBiking.dataFilters', []);
 
@@ -65,8 +67,10 @@ module bostonBiking {
 		}
 
 		public create(dataFilter: DataFilter) : L.mapbox.FilterFunction {
-			if (dataFilter.type === 'text' || dataFilter.type === 'multi') {
+			if (dataFilter.type === 'text') {
 				return this.createTextDataFilter(dataFilter.value, dataFilter.column);
+			} else if (dataFilter.type === 'multi') {
+				return this.createMultiSelect2DataFilter(dataFilter.value, dataFilter.column);
 			}
 			return (str: any) => true;
 		}
@@ -80,6 +84,17 @@ module bostonBiking {
 
 				return data.toLowerCase().indexOf(lowerText) > -1;
 			};
+		}
+
+		private createMultiSelect2DataFilter(values: Array<string>, column: string): L.mapbox.FilterFunction {
+			var lowerValues = _.map(values, val => (val + '').toLowerCase());
+			return function(featureData: any) {
+				if (lowerValues.length == 0) { return true; }
+				var data = '' + featureData.properties[column];
+				if (!data) { return false; }
+
+				return lowerValues.indexOf(data.toLowerCase()) > -1;
+			}
 		}
 	}
 
