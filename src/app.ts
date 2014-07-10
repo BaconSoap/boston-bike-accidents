@@ -4,7 +4,16 @@
 ///<reference path="dataFilterService.ts" />
 
 module bostonBiking {
-	var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters', 'ui.select2']);
+	var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters', 'ui.select2', 'ngQuickDate']);
+
+	app.config(['ngQuickDateDefaultsProvider', defaults => {
+		defaults.set('parseDateFunction', str => {
+			var d = moment(new Date(str));
+			var isValid = d.isValid() && (str !== null && typeof str !== 'undefined' && str != '');
+			return isValid? d.toDate(): null;
+		});
+	}]);
+
 	app.controller('mapCtrl',
 		['$scope', 'mapService', 'dataService', 'dataFilterService',
 		($scope, mapService: MapService, dataService: DataService, dataFilterService: DataFilterService) => {

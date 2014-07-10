@@ -207,12 +207,28 @@ var bostonBiking;
             var deferred = this.$q.defer();
 
             this.$http.get(bostonBiking.config.filterUrl).then(function (data) {
-                return _this.updateFilters(data.data.filters);
-            }).then(function (data) {
-                return deferred.resolve(data);
+                return _this.initializeFilterValues(data.data.filters);
+            }).then(function (filters) {
+                return _this.updateFilters(filters);
+            }).then(function (filters) {
+                return deferred.resolve(filters);
             });
 
             return deferred.promise;
+        };
+
+        DataFilterService.prototype.initializeFilterValues = function (filters) {
+            filters.forEach(function (filter) {
+                if (filter.type === 'date') {
+                    filter.value = {
+                        from: null,
+                        to: null
+                    };
+                } else {
+                    filter.value = null;
+                }
+            });
+            return filters;
         };
 
         DataFilterService.prototype.updateFilters = function (dataFilters) {
@@ -251,17 +267,22 @@ var bostonBiking;
 
     var DataFilterFunctionFactory = (function () {
         function DataFilterFunctionFactory() {
+            this.passThrough = function (f) {
+                return true;
+            };
             this.cachedFunctions = {};
         }
         DataFilterFunctionFactory.prototype.create = function (dataFilter) {
-            if (dataFilter.type === 'text') {
-                return this.createTextDataFilter(dataFilter.value, dataFilter.column);
-            } else if (dataFilter.type === 'multi') {
-                return this.createMultiSelect2DataFilter(dataFilter.value, dataFilter.column);
+            switch (dataFilter.type) {
+                case 'text':
+                    return this.createTextDataFilter(dataFilter.value, dataFilter.column);
+                case 'multi':
+                    return this.createMultiSelect2DataFilter(dataFilter.value, dataFilter.column);
+                case 'date':
+                    return this.createDateRangeDataFilter(dataFilter.value, dataFilter.column);
+                default:
+                    return this.passThrough;
             }
-            return function (str) {
-                return true;
-            };
         };
 
         DataFilterFunctionFactory.prototype.createTextDataFilter = function (text, column) {
@@ -295,6 +316,34 @@ var bostonBiking;
                 return lowerValues.indexOf(data.toLowerCase()) > -1;
             };
         };
+
+        DataFilterFunctionFactory.prototype.createDateRangeDataFilter = function (value, column) {
+            var from = moment(new Date(value.from));
+            var to = moment(new Date(value.to));
+            var fromValid = from.isValid() && (value.from !== null);
+            var toValid = to.isValid() && (value.to !== null);
+
+            if (!(fromValid || toValid)) {
+                return this.passThrough;
+            }
+            return function (featureData) {
+                var momentDate;
+                var match = true;
+
+                momentDate = moment(new Date(featureData.properties[column]));
+                if (!momentDate.isValid()) {
+                    return true;
+                }
+
+                if (fromValid) {
+                    match = match && from.isBefore(momentDate);
+                }
+                if (toValid) {
+                    match = match && to.isAfter(momentDate);
+                }
+                return match;
+            };
+        };
         return DataFilterFunctionFactory;
     })();
 
@@ -313,7 +362,17 @@ var bostonBiking;
 ///<reference path="dataFilterService.ts" />
 var bostonBiking;
 (function (bostonBiking) {
-    var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters', 'ui.select2']);
+    var app = angular.module('bostonBiking', ['bostonBiking.map', 'bostonBiking.data', 'bostonBiking.dataFilters', 'ui.select2', 'ngQuickDate']);
+
+    app.config([
+        'ngQuickDateDefaultsProvider', function (defaults) {
+            defaults.set('parseDateFunction', function (str) {
+                var d = moment(new Date(str));
+                var isValid = d.isValid() && (str !== null && typeof str !== 'undefined' && str != '');
+                return isValid ? d.toDate() : null;
+            });
+        }]);
+
     app.controller('mapCtrl', [
         '$scope', 'mapService', 'dataService', 'dataFilterService',
         function ($scope, mapService, dataService, dataFilterService) {

@@ -10,8 +10,11 @@
     <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/select2/select2.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/ngQuickDate/dist/ng-quick-date.min.js"></script>
     <script src="bower_components/angular-ui-select2/src/select2.js"></script>
     <link rel="stylesheet" href="bower_components/select2/select2.css" />
+    <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date-plus-default-theme.css"/>
     <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
     <script src="build/app.js"></script>
@@ -34,6 +37,10 @@
                         <select multiple ui-select2="viewModel.multiSelect2Options" ng-model="dataFilter.value" ng-change="updateFilters()" ng-if="dataFilter.type == 'multi'">
                             <option ng-repeat="val in dataFilter.values" value="{{val.id}}">{{val.text}}</option>
                         </select>
+                        <span ng-if="dataFilter.type == 'date'">
+                            <quick-datepicker ng-model="dataFilter.value.from" ng-change="updateFilters()" placeholder="From Date" disable-timepicker="true"></quick-datepicker>
+                            <quick-datepicker ng-model="dataFilter.value.to" ng-change="updateFilters()" placeholder="To Date" disable-timepicker="true"></quick-datepicker>
+                        </span>
                         {{dataFilter.prettyName}}</label>
                 </li>
             </ul>
